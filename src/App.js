@@ -1,11 +1,17 @@
 import React from 'react';
-import Login from './components/login';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { UserLogin, Home, NoData, Profile } from './pages';
 
 function App() {
   return (
-    <div className="App">
-    <Login/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<UserLogin />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<NoData />} />
+      </Routes>
+    </Router>
   );
 }
 
