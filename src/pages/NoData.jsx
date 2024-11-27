@@ -1,7 +1,7 @@
 import React from 'react';
 import { BkoBtn } from '../components/custom';
 import { useNavigate } from 'react-router-dom';
-import pageNotFound from '../assets/pageNotafound.png';
+import pageNotFound from '../assets/images/pageNotafound.png';
 
 const NoData = () => {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ const NoData = () => {
     navigate('/home');
   };
   return (
-    <main className=" place-items-center  px-6 py-24 sm:py-32 lg:px-8 ">
+    <main className=" place-items-center  px-6 py-8 lg:px-8 ">
       <div className="text-center">
         <img src={pageNotFound} alt="" className="h-[500px]" />
 
@@ -17,7 +17,7 @@ const NoData = () => {
           Sorry, we couldn’t find the page you’re looking for.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
-          <BkoBtn label="Go back home" className="w-fit" onClick={goToHome} />
+          <BkoBtn label="Go back home" className="w-40" onClick={goToHome} />
         </div>
       </div>
     </main>

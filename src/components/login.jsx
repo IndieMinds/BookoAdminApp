@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import logo from '../assets/logo3.png';
+import logo from '../assets/images/logo3.png';
 import { BkoBtn, BkoInput } from './custom';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
+    const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const Submit = (e) => {
@@ -13,7 +13,7 @@ export default function Login() {
     console.log('email', e.email);
     console.log('password', e.password);
     navigate('/home');
-  };
+      };
   return (
     <>
       <div className="bg-[#f7f7f7] flex flex-1 flex-col justify-center px-6 py-12 lg:px-3 h-svh">

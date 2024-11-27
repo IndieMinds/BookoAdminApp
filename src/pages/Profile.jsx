@@ -32,7 +32,7 @@ const Profile = () => {
               <BkoInput
                 id="mobile"
                 name="mobile"
-                type="mobile"
+                type="number"
                 label="Contact No."
                 autoComplete="mobile"
               />
@@ -43,7 +43,7 @@ const Profile = () => {
               <BkoInput
                 id="firstName"
                 name="firstName"
-                type="firstName"
+                type="text"
                 label="First Name"
                 autoComplete="firstName"
               />
@@ -52,7 +52,7 @@ const Profile = () => {
               <BkoInput
                 id="lastName"
                 name="lastName"
-                type="lastName"
+                type="text"
                 label="Last Name"
                 autoComplete="lastName"
               />
@@ -64,7 +64,7 @@ const Profile = () => {
               <BkoInput
                 id="city"
                 name="city"
-                type="city"
+                type="text"
                 label="City"
                 autoComplete="city"
               />
@@ -73,7 +73,7 @@ const Profile = () => {
               <BkoInput
                 id="designation"
                 name="designation"
-                type="designation"
+                type="text"
                 label="Designation"
                 autoComplete="designation"
               />
@@ -91,7 +91,7 @@ const Profile = () => {
                 id="address"
                 name="address"
                 className="block w-full mt-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm"
-                type="address"
+                type="text"
                 autoComplete="address"
               />
             </div>
@@ -106,13 +106,15 @@ const Profile = () => {
                 id="bio"
                 name="bio"
                 className="block w-full mt-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm"
-                type="bio"
+                type="text"
                 autoComplete="bio"
               />
             </div>
           </div>
           <div className="flex justify-center pt-6">
-            <BkoBtn label="Save" className="w-24" />
+            <div>
+              <BkoBtn label="Save" className="w-36" />
+            </div>
           </div>
         </div>
       </div>
