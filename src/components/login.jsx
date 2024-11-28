@@ -2,30 +2,29 @@ import { useState } from 'react';
 import logo from '../assets/images/logo3.png';
 import { BkoBtn, BkoInput } from './custom';
 import { useNavigate } from 'react-router-dom';
-import useCommon from '../services/apis/common';
+import api from '../services/apis/api';
 
 export default function Login() {
   const navigate = useNavigate();
+  const bkoApi = api();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { createClient } = useCommon();
-  const api = createClient();
 
-  const Submit = () => {
-    // e.preventDefault();
-    console.log('email', email);
-    // console.log('password', password);
-    api
-      .post('/auth/login',{
-        email,password
-      })
-      .then((res) => {
-        console.log(res, 'res___');
-        navigate('/home'); // Navigate only after successful login
-      })
-      .catch((err) => {
-        console.error('Error:', err); // Log the error for debugging
+  const Submit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await bkoApi('/auth/login', {
+        method: 'POST',
+        requestData: { email, password },
       });
+      if (response.success) {
+        alert('Whoooiii Welcome to Booko!!!');
+      }
+      navigate('/home');
+    } catch (err) {
+      alert('Login failed! Please check your credentials and try again.');
+    }
   };
   return (
     <>
@@ -49,7 +48,7 @@ export default function Login() {
                   label="Email address"
                   autoComplete="email"
                   onChange={(e) => setEmail(e.target.value)}
-                  />
+                />
               </div>
 
               <div>
