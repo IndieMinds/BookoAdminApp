@@ -2,17 +2,28 @@ import { useState } from 'react';
 import logo from '../assets/images/logo3.png';
 import { BkoBtn, BkoInput } from './custom';
 import { useNavigate } from 'react-router-dom';
+import useCommon from  '../services/apis/common'
 
 export default function Login() {
   const navigate = useNavigate();
-    const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const {createClient} = useCommon();
+  const api = createClient();
 
   const Submit = (e) => {
     e.preventDefault();
     console.log('email', e.email);
     console.log('password', e.password);
-    navigate('/home');
+    api
+    .get('/ping')
+    .then((res) => {
+      console.log(res,"res___");
+      navigate('/home'); // Navigate only after successful login
+    })
+    .catch((err) => {
+      console.error("Error:", err); // Log the error for debugging
+    });
       };
   return (
     <>
