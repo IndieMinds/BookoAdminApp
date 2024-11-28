@@ -2,29 +2,31 @@ import { useState } from 'react';
 import logo from '../assets/images/logo3.png';
 import { BkoBtn, BkoInput } from './custom';
 import { useNavigate } from 'react-router-dom';
-import useCommon from  '../services/apis/common'
+import useCommon from '../services/apis/common';
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {createClient} = useCommon();
+  const { createClient } = useCommon();
   const api = createClient();
 
-  const Submit = (e) => {
-    e.preventDefault();
-    console.log('email', e.email);
-    console.log('password', e.password);
+  const Submit = () => {
+    // e.preventDefault();
+    console.log('email', email);
+    // console.log('password', password);
     api
-    .get('/ping')
-    .then((res) => {
-      console.log(res,"res___");
-      navigate('/home'); // Navigate only after successful login
-    })
-    .catch((err) => {
-      console.error("Error:", err); // Log the error for debugging
-    });
-      };
+      .post('/auth/login',{
+        email,password
+      })
+      .then((res) => {
+        console.log(res, 'res___');
+        navigate('/home'); // Navigate only after successful login
+      })
+      .catch((err) => {
+        console.error('Error:', err); // Log the error for debugging
+      });
+  };
   return (
     <>
       <div className="bg-[#f7f7f7] flex flex-1 flex-col justify-center px-6 py-12 lg:px-3 h-svh">
@@ -46,8 +48,8 @@ export default function Login() {
                   value={email}
                   label="Email address"
                   autoComplete="email"
-                  onChange={(e) => setEmail(e.traget.value)}
-                />
+                  onChange={(e) => setEmail(e.target.value)}
+                  />
               </div>
 
               <div>
@@ -56,9 +58,9 @@ export default function Login() {
                   name="password"
                   value={password}
                   label="Password"
-                  type="password"
+                  type="text"
                   autoComplete="current-password"
-                  onChange={(e) => setPassword(e.traget.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className="flex items-center justify-end">
                   <div className="text-sm mt-2">

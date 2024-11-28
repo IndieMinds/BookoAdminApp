@@ -5,7 +5,7 @@ import useAuthStore from '../../stores/authStore';
 
 const useCommon = () => {
   const navigate = useNavigate();
-  const { token } = useAuthStore(); // Access the token 
+  const { token } = useAuthStore(); // Access the token
 
   const createClient = () => {
     const api = axios.create({
@@ -37,9 +37,10 @@ const useCommon = () => {
               navigate('/not-found');
               break;
             default:
-              return Promise.reject(err);          }
+              return Promise.reject(err);
+          }
         }
-        throw err; 
+        throw err;
       }
     );
 
